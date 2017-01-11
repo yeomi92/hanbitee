@@ -19,7 +19,7 @@ a:active {color: #ed4e92;}/* selected link */
 .color_blue{color: blue;}
 .color_yellow{color: yellow}
 .color_white{color: white}
-.event_hover:hover {background-color: #ed4e92;}
+.event_hover:hover {background-color: #c0c0c0;}
 .font_bold{font-weight: bold;}
 .font_italic{font-style: italic;}
 .join_select{width: 120px;height: 20px;}
@@ -38,6 +38,7 @@ a:active {color: #ed4e92;}/* selected link */
 .table_bottom tr th{border-bottom: 1px solid #505050;border-collapse: collapse;}
 .table_bottom tr td{border-bottom: 1px solid #505050;border-collapse: collapse;}
 .table_even tr:nth-child(even){background-color: #d9d9d9}
+.table_odd tr:nth-child(odd){background-color: #d9d9d9}
 .text_center{text-align: center;}
 .text_left{text-align: left;}
 .text_right{text-align: right;}
