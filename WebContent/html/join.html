@@ -2,21 +2,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-</style>
+<title>Join</title>
+<link rel="stylesheet" href="../css/hanbit.css"/>
 </head>
 <body>
-<div style="width: 100%;">
-<form action="" style="width: 40%;margin: 0 auto;">
-<h4><a href="../index.html">홈으로</a></h4>
-<table>
+<div class="width_full_size">
+<form action="" style="width: 40%;" class="margin_center">
+<h4><a class="text_no_underline" href="../index.html">홈으로</a></h4>
+<table class="table_default">
 	<tr>
-		<td><p><font size="2">한글 또는 영문으로 입력해 주세요.</font></p>
+		<td><p class="color_blue"><font size="2">한글 또는 영문으로 입력해 주세요.</font></p>
 		<input type="text" name="" value="E-mail" size="60">
 		<input type="button" value="중복확인" size="60"><br>
 		<p><font size="2">LPOINT 아이디는 자주 사용하시는 이메일주소로 입력해주세요.</font></p>
@@ -29,7 +24,8 @@ table, th, td {
 		</td>
 	</tr>
 	<tr>
-		<td><select name="" style="width: 120px;height: 20px;">
+		<td>
+		<select name="" class="join_select">
 			<option value="생년">생년</option>
 			<option value="1992">1992</option>
 			<option value="1993">1993</option>
@@ -42,7 +38,7 @@ table, th, td {
 			<option value="2000">2000</option>
 			<option value="2001">2001</option>
 		</select>
-		<select name="" style="width: 120px;height: 20px;">
+		<select name="" class="join_select">
 			<option value="월">월</option>
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -57,7 +53,7 @@ table, th, td {
 			<option value="11">11</option>
 			<option value="12">12</option>
 		</select>
-		<select name="" style="width: 120px;height: 20px;">
+		<select name="" class="join_select">
 			<option value="일">일</option>
 			<option value="1">1</option>
 			<option value="2">2</option>
@@ -74,12 +70,12 @@ table, th, td {
 	</tr>
 	<tr>
 		<td>
-		<select name="" style="width: 120px;height: 20px;">
+		<select name="" class="join_select">
 			<option value="SKT">SKT</option>
 			<option value="KT">KT</option>
 			<option value="LGU+">LGU+</option>
 		</select>
-		<select name="" style="width: 80px;height: 20px;">
+		<select name="" class="join_select">
 			<option value="010">010</option>
 			<option value="011">011</option>
 			<option value="016">016</option>
@@ -90,24 +86,24 @@ table, th, td {
 	</tr>
 	<tr>
 		<td><font size="2"><b>정보수신 동의</b>
-		<b style="text-align: right;">전체선택</b><input type="checkbox" name="" value="전체선택"><br>
+		<b>전체선택</b><input type="checkbox" name="" value="전체선택"><br>
 		<b>LPOINT</b><input type="checkbox" name="" value="E-Mail">E-Mail
 		<input type="checkbox" name="" value="SMS">SMS<br>
 		<b>롯데시네마</b><input type="checkbox" name="" value="E-Mail">E-Mail
-		<input type="checkbox" name="" value="SMS">SMS
-		<p>*정보수신동의를 하시면, 고객혜택 및 이벤트 등 다양한 정보를 받으실 수 있습니다.</font></p></td>
+		<input type="checkbox" name="" value="SMS">SMS<br>
+		*정보수신동의를 하시면, 고객혜택 및 이벤트 등 다양한 정보를 받으실 수 있습니다.</font></td>
 	</tr>
 	<tr>
-		<td><font size="2"><b>개인정보<br>
-		유효기간</b><input type="radio" name="" value="탈퇴 시 파기" checked="checked">탈퇴 시 파기 <input type="radio" name="" value="1년">1년
-		<p>*개인정보 유효기간 경과 이후 개인정보를 분리 저장관리 또는 파기합니다.</p></font></td>
+		<td><font size="2"><span class="font_bold">개인정보<br>
+		유효기간</span><input type="radio" name="" value="탈퇴 시 파기" checked="checked">탈퇴 시 파기 <input type="radio" name="" value="1년">1년<br>
+		*개인정보 유효기간 경과 이후 개인정보를 분리 저장관리 또는 파기합니다.</font></td>
 	</tr>
 	<tr>
-		<td><font size="2"><p style="color: #e45f5f"><b>*선택항목에 동의하지 않으셔도 정상적인 서비스를 이용하실 수 있습니다.</b></p></font></td>
+		<td class="color_blue"><font size="2"><b>*선택항목에 동의하지 않으셔도 정상적인 서비스를 이용하실 수 있습니다.</b></font></td>
 	</tr>
 	<tr>
-		<td><input type="submit" name="" value="이전" style="background-color:#a0a0a0;color:white;width: 200px;">
-		<input type="submit" name="" value="다음" style="background-color:#3c70c5;color:white;width: 200px;"></td>
+		<td><input type="submit" name="" value="이전" class="color_white" style="background-color: #a0a0a0;width: 200px;">
+		<input type="submit" name="" value="다음" class="color_white" style="background-color: #3c70c5;width: 200px;"></td>
 	</tr>
 </table>
 </form>
