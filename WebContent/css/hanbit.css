@@ -4,6 +4,7 @@ a:visited {color: #3d3d3d;}/* visited link */
 a:hover {color: #f491bb;}/* mouse over link */
 a:active {color: #ed4e92;}/* selected link */
 .bg_color_black{background: black;}
+.bg_color_gray{background-color: #cacaca;}
 .border_dotted {border-style: dotted;}
 .border_dashed {border-style: dashed;}
 .border_solid {border-style: solid;}
@@ -19,6 +20,7 @@ a:active {color: #ed4e92;}/* selected link */
 .color_blue{color: blue;}
 .color_yellow{color: yellow}
 .color_white{color: white}
+
 .event_hover:hover {background-color: #c0c0c0;}
 .font_bold{font-weight: bold;}
 .font_italic{font-style: italic;}
