@@ -1,9 +1,26 @@
 @CHARSET "UTF-8";
-a:link {color: #FF0000;}/* unvisited link */
-a:visited {color: #3d3d3d;}/* visited link */
-a:hover {color: #f491bb;}/* mouse over link */
+a:link {color: #655e66;}/* unvisited link */
+a:visited {color: #655e66;}/* visited link */
+a:hover {color: #655e66;}/* mouse over link */
 a:active {color: #ed4e92;}/* selected link */
-.bg_color_black{background: black;}
+/* reset style */
+html, body {
+margin: 0;padding: 0;border: 0;font-size: 12px;color:#666;font-family:'Dotum', tahoma,arial,sans-serif,verdana,helvetica;
+background: transparent;} 
+h1,h2,h3,h4,h5,h6,p{margin-top:0;}
+fieldset, img{border:0;}
+table{border-collapse:collapse;border-spacing :0;}
+caption, th, td{text-align : left;vertical-align : top;font-weight : normal;}
+input, textarea, select{font-size:110%;line-height:1.1;}
+abbr, acronym{border-bottom : .1em dotted;cursor : help;}
+sup{vertical-align : text-top;}
+sub{vertical-align : text-bottom;}
+blockquote, q {quotes: none;} 
+/* customized style */
+.bg_color_black{background-color: black;}
+.bg_color_darkgray{background-color: #5a5a5a;}
+.bg_color_skyblue{background-color: skyblue;}
+.bg_color_powderblue{background-color: powderblue;}
 .bg_color_gray{background-color: #cacaca;}
 .border_dotted {border-style: dotted;}
 .border_dashed {border-style: dashed;}
@@ -17,13 +34,18 @@ a:active {color: #ed4e92;}/* selected link */
 .border_hidden {border-style: hidden;}
 .border_mix {border-style: dotted dashed solid double;}
 .color_red{color: red;}
+.color_black{color: black;}
 .color_blue{color: blue;}
-.color_yellow{color: yellow}
-.color_white{color: white}
-
+.color_yellow{color: yellow;}
+.color_white{color: white;}
+.display_block{display: block;}
+.display_block{display: inline;}
+.display_none{display: none;}/*no space*/
+.display_hidden{visibility: hidden;}/*taking space*/
 .event_hover:hover {background-color: #c0c0c0;}
 .font_bold{font-weight: bold;}
 .font_italic{font-style: italic;}
+.gnb{}
 .join_select{width: 120px;height: 20px;}
 .height_full_size{height: 100%}
 .list_circle{list-style-type: circle;}
@@ -31,6 +53,9 @@ a:active {color: #ed4e92;}/* selected link */
 .list_upper_roman{list-style-type: upper-roman;}
 .list_lower_alphae{list-style-type: lower-alpha;}
 .margin_center{margin: 0 auto;}
+.position_fix{position: fixed;}
+.position_abs{position: absolute;}
+.position_rel{position: relative;}
 .table_default{border: 1px solid #505050;border-collapse: collapse;}
 .table_default tr{border: 1px solid #505050;border-collapse: collapse;}
 .table_default tr th{border: 1px solid #505050;border-collapse: collapse;}
@@ -39,8 +64,8 @@ a:active {color: #ed4e92;}/* selected link */
 .table_bottom tr{border-bottom: 1px solid #505050;border-collapse: collapse;}
 .table_bottom tr th{border-bottom: 1px solid #505050;border-collapse: collapse;}
 .table_bottom tr td{border-bottom: 1px solid #505050;border-collapse: collapse;}
-.table_even tr:nth-child(even){background-color: #d9d9d9}
-.table_odd tr:nth-child(odd){background-color: #d9d9d9}
+.table_even tr:nth-child(even){background-color: #d9d9d9;}
+.table_odd tr:nth-child(odd){background-color: #d9d9d9;}
 .text_center{text-align: center;}
 .text_left{text-align: left;}
 .text_right{text-align: right;}
@@ -48,3 +73,30 @@ a:active {color: #ed4e92;}/* selected link */
 .text_overline{text-decoration: overline;}
 .text_line_through{text-decoration: line-through;}
 .width_full_size{width: 100%;}
+
+/*나중에 jQueryg할 때 삭제*/
+.float_right{float:right;}
+.float_left{float:left;}
+.gnb {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: powderblue;
+}
+
+.gnb li {
+    float: left;
+}
+
+.gnb li a {
+    display: block;
+    color: #5a5a5a;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+/* Change the link color to #111 (black) on hover */
+.gnb li a:hover {
+    background-color: #111;
+}
