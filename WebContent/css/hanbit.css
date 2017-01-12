@@ -2,7 +2,7 @@
 a:link {color: #655e66;}/* unvisited link */
 a:visited {color: #655e66;}/* visited link */
 a:hover {color: #655e66;}/* mouse over link */
-a:active {color: #ed4e92;}/* selected link */
+a:active {color: #70c5cb;}/* selected link */
 /* reset style */
 html, body {
 margin: 0;padding: 0;border: 0;font-size: 12px;color:#666;font-family:'Dotum', tahoma,arial,sans-serif,verdana,helvetica;
@@ -100,3 +100,41 @@ blockquote, q {quotes: none;}
 .gnb li a:hover {
     background-color: #111;
 }
+
+.lnb {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+.lnb li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.lnb li {
+    text-align: center;
+    border-bottom: 1px solid #ffffff;
+}
+
+.lnb li:last-child {
+    border-bottom: none;
+}
+
+.lnb li a.active {
+    background-color: #a777bb;
+    color: white;
+}
+
+.lnb li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+#admin_tab tr td{height:40px;}
+#admin_tab tr th{height:40px;}
+
+.policy >dd {float: left;}
