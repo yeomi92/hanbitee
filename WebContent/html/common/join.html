@@ -3,38 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Join</title>
-<link rel="stylesheet" href="../css/hanbit.css"/>
-<style>
-#contaier{margin-top: 100px;}
-#header li{display: inline;}
-#header a:link, a:visited {
-    background-color: powderblue;
-    color: #5a5a5a;
-    padding: 10px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: bold;
-    font-size: 13px;
-}
-#header a:hover, a:active {
-    background-color: #66c4ce;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
 <div id="header" class="width_full_size" style="height: 100px;position: fixed;height: 68px;z-index: 2; background-color: white;">
-	<div class="logo_box width_full_size text_center" style="margin-bottom: 10px">
-	<img src="../images/index/index_logo.png" width="280px" height="40px"/>
+	<div class="logo_box width_full_size">
+	<img src="../../images/common/index_logo.png"/>
 	</div>
 	<div class="gnb width_full_size">
 	<ul style="margin: 0px;">
-		<li><a class="text_no_underline color_black" href="../index.html">홈으로</a></li>
-		<li><a class="text_no_underline color_black" href="">이용안내</a></li>
-		<li><a class="text_no_underline color_black" href="">진료안내</a></li>
-		<li><a class="text_no_underline color_black" href="board.html">자유게시판</a></li>
-		<li><a class="text_no_underline color_black" href="admin.html">관리자</a></li>
+		<li><a class="text_no_underline color_black" href="../../index.html">홈으로</a></li>
+		<li><a class="text_no_underline color_black" href="../bbs/bbs_list.html">게시판</a></li>
+		<li><div class="dropdown">
+			<a class="text_no_underline color_black" href="../admin/admin.html">관리자</a>
+				<div class="dropdown_content">
+				   <p><a class="active" href="../staff/doctors.html">의사</a></p>
+				   <p><a class="active" href="../staff/nurses.html">간호사</a></p>
+				   <p><a class="active" href="../customer/patients.html">환자</a></p>
+				   <p><a class="active" href="../chart/chart_list.html">차트</a></p>
+				</div>
+			</div>
+		</li>
+		<li>
+			<div class="tooltip">
+				<a class="text_no_underline color_black" href="#">병원소개</a>
+					<span class="tooltiptext">구현되지 않았습니다.</span>
+			</div>
+		</li>
 		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="join.html">회원 가입</a></li>
 		<li style="float:right;"><a class="text_no_underline color_black" href="login.html">로그인</a></li>
 	</ul>
