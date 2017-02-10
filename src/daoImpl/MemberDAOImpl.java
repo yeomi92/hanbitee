@@ -8,22 +8,10 @@ import enums.Vendor;
 import factory.DatabaseFactory;
 
 public class MemberDAOImpl implements MemberDAO{
-	private Connection connection;
-	private Statement stmt;
-	private ResultSet set;
-	public MemberDAOImpl() {
-		try {
-			connection=DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection();
-			stmt=connection.createStatement();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	@Override
 	public void insert(MemberBean member) {
 		try {
-			int count=stmt.executeUpdate(String.format("INSERT INTO Member(id,name,ssn,password,profileImg,phone,email,rank)VALUES('%s','%s','%s','%s','%s','%s','%s','C')",member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail()));
-			System.out.println(count);
+			DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("INSERT INTO Member(id,name,ssn,password,profileImg,phone,email,rank)VALUES('%s','%s','%s','%s','%s','%s','%s','C')",member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -33,21 +21,16 @@ public class MemberDAOImpl implements MemberDAO{
 		MemberBean temp=new MemberBean();
 		String sql=String.format("SELECT * FROM Member WHERE id = '%s'", uid);
 		try {
-			set=stmt.executeQuery(sql);
-			if(stmt.execute(String.format(sql))){
-				set=stmt.executeQuery(String.format(sql));
-				while(set.next()){
-					temp.setId(set.getString("id"));
-					temp.setName(set.getString("name"));
-					temp.setSsn(set.getString("ssn"));
-					temp.setPassword(set.getString("password"));
-					temp.setProfileImg(set.getString("profileImg"));
-					temp.setPhone(set.getString("phone"));
-					temp.setEmail(set.getString("email"));
-					temp.setRank(set.getString("rank"));
-				}
-			}else{
-				temp=null;
+			ResultSet set=DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(sql);
+			while(set.next()){
+				temp.setId(set.getString("id"));
+				temp.setName(set.getString("name"));
+				temp.setSsn(set.getString("ssn"));
+				temp.setPassword(set.getString("password"));
+				temp.setProfileImg(set.getString("profileImg"));
+				temp.setPhone(set.getString("phone"));
+				temp.setEmail(set.getString("email"));
+				temp.setRank(set.getString("rank"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -62,12 +45,23 @@ public class MemberDAOImpl implements MemberDAO{
 
 	@Override
 	public void update(MemberBean member) {
-		String sql=String.format("SELECT * FROM Member WHERE id = '%s'", member.getId());
-		
+		try {
+			ResultSet set1=DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(String.format("SELECT * FROM Member WHERE id = '%s'", member.getId()));
+			while(set1.next()){
+				DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member.getName().equals("")?set1.getString("name"):member.getName()),(member.getPassword().equals("")?set1.getString("password"):member.getPassword()),(member.getProfileImg().equals("")?set1.getString("profileImg"):member.getProfileImg()),(member.getPhone().equals("")?set1.getString("phone"):member.getPhone()),(member.getEmail().equals("")?set1.getString("email"):member.getEmail()),member.getId()));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
 	}
 
 	@Override
 	public void delete(MemberBean member) {
-		
+		String sql=String.format("DELETE FROM Member WHERE id='%s'", member.getId());
+		try {
+			DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
