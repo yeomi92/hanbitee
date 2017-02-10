@@ -38,9 +38,7 @@ public class MemberDAOImpl  implements MemberDAO {
 	public boolean login(MemberBean member) throws SQLException {
 		boolean loginch=false;
 		MemberBean temp=selectById(member.getId());
-		if(temp.getId().equals("")){
-			loginch=false;
-		}else{
+		if(!temp.getId().equals("")){
 			if((member.getId().equals(temp.getId()))&&(member.getPassword().equals(temp.getPassword()))){
 				loginch=true;
 			}
