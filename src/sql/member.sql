@@ -11,4 +11,5 @@ CREATE TABLE Member(
 );
 INSERT INTO Member(id,name,ssn,password,profileImg,phone,email,rank)
 VALUES('hong','È«±æµ¿','800101-1','1','default.jpg','010-1234-5678','hong@test.com','C');
-SELECT * FROM Member WHERE id='hong';
+SELECT * FROM Member;
+UPDATE MEMBER SET name='¿°Çý¼±' WHERE id='yeom';

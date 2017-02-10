@@ -1,11 +1,13 @@
 package service;
 
+import java.sql.SQLException;
+
 import domain.MemberBean;
 
 public interface MemberService {
-	public void join(MemberBean member);
-	public MemberBean findById(String uid);
-	public boolean login(MemberBean member);
-	public void change(MemberBean member);
-	public void remove(MemberBean member);
+	public void join(MemberBean member) throws SQLException ;
+	public MemberBean findById(String uid) throws SQLException ;
+	public boolean login(MemberBean member) throws SQLException ;
+	public void change(MemberBean member) throws SQLException ;
+	public void remove(MemberBean member) throws SQLException ;
 }
