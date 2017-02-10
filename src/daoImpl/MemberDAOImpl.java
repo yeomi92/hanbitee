@@ -8,6 +8,10 @@ import enums.Vendor;
 import factory.DatabaseFactory;
 
 public class MemberDAOImpl  implements MemberDAO {
+	MemberBean mem;
+	public MemberDAOImpl() {
+		mem=new MemberBean();
+	}
 	public static MemberDAOImpl getInstance() {
 		return new MemberDAOImpl();
 	}
@@ -38,10 +42,9 @@ public class MemberDAOImpl  implements MemberDAO {
 	public boolean login(MemberBean member) throws SQLException {
 		boolean loginch=false;
 		MemberBean temp=selectById(member.getId());
-		if(!temp.getId().equals("")){
-			if((member.getId().equals(temp.getId()))&&(member.getPassword().equals(temp.getPassword()))){
-				loginch=true;
-			}
+		System.out.println(temp);
+		if(!(temp.getId().equals(""))&&(temp.getPassword().equals(member.getPassword()))){
+			loginch=true;
 		}
 		return loginch;
 	}

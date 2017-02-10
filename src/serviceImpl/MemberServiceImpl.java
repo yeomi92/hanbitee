@@ -8,12 +8,11 @@ import domain.MemberBean;
 import service.MemberService;
 
 public class MemberServiceImpl implements MemberService{
-	/*private static MemberServiceImpl instance=new MemberServiceImpl();
-	public static MemberServiceImpl getInstance() {
-		return instance;
-	}*/
-	public static MemberServiceImpl getInstance() {
-		return new MemberServiceImpl();
+	private static MemberServiceImpl instance=new MemberServiceImpl();
+	public static MemberServiceImpl getInstance() {return instance;}
+	private MemberBean session;
+	public MemberServiceImpl() {
+		session=new MemberBean();
 	}
 	@Override
 	public void join(MemberBean member) throws SQLException {
@@ -22,12 +21,14 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public MemberBean findById(String uid) throws SQLException {
-		return MemberDAOImpl.getInstance().selectById(uid);
+		session=MemberDAOImpl.getInstance().selectById(uid);
+		return session;
 	}
 
 	@Override
 	public boolean login(MemberBean member) throws SQLException {
-		return MemberDAOImpl.getInstance().login(member);
+		
+		return MemberDAOImpl.getInstance().login(session);
 	}
 
 	@Override

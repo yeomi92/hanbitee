@@ -68,7 +68,6 @@ public class DAOTest {
 					break;
 				case UPDATE:
 					member=new MemberBean();
-					member.setId(test.input("변경할 아이디를 입력하세요."));
 					member.setName(test.input("변경할 이름을 입력하세요."));
 					member.setPassword(test.input("변경할 비밀번호를 입력하세요."));
 					member.setPhone(test.input("변경할 휴대폰 번호를 입력하세요."));
