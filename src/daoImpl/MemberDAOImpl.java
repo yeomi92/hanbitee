@@ -46,10 +46,7 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void update(MemberBean member) {
 		try {
-			ResultSet set=DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(String.format("SELECT * FROM Member WHERE id = '%s'", member.getId()));
-			while(set.next()){
-				DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member.getName().equals("")?set.getString("name"):member.getName()),(member.getPassword().equals("")?set.getString("password"):member.getPassword()),(member.getProfileImg().equals("")?set.getString("profileImg"):member.getProfileImg()),(member.getPhone().equals("")?set.getString("phone"):member.getPhone()),(member.getEmail().equals("")?set.getString("email"):member.getEmail()),member.getId()));
-			}
+			DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member.getName().equals("")?"":member.getName()),(member.getPassword().equals("")?"":member.getPassword()),(member.getProfileImg().equals("")?"":member.getProfileImg()),(member.getPhone().equals("")?"":member.getPhone()),(member.getEmail().equals("")?"":member.getEmail()),member.getId()));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
