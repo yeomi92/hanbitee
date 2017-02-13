@@ -8,17 +8,13 @@ import enums.Vendor;
 import factory.DatabaseFactory;
 
 public class MemberDAOImpl  implements MemberDAO {
-	MemberBean mem;
-	public MemberDAOImpl() {
-		mem=new MemberBean();
-	}
 	public static MemberDAOImpl getInstance() {
 		return new MemberDAOImpl();
 	}
 
 	@Override
-	public void insert(MemberBean member) throws SQLException {
-		DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("INSERT INTO Member(id,name,ssn,password,profileImg,phone,email,rank)VALUES('%s','%s','%s','%s','%s','%s','%s','C')",member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail()));
+	public int insert(MemberBean member) throws SQLException {
+		return DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("INSERT INTO Member(id,name,ssn,password,profileImg,phone,email,rank)VALUES('%s','%s','%s','%s','%s','%s','%s','C')",member.getId(),member.getName(),member.getSsn(),member.getPassword(),member.getProfileImg(),member.getPhone(),member.getEmail()));
 	}
 	
 	@Override
@@ -34,6 +30,8 @@ public class MemberDAOImpl  implements MemberDAO {
 			temp.setPhone(set.getString("phone"));
 			temp.setEmail(set.getString("email"));
 			temp.setRank(set.getString("rank"));
+		}else{
+			temp=null;
 		}
 		return temp;
 	}
@@ -41,23 +39,23 @@ public class MemberDAOImpl  implements MemberDAO {
 	@Override
 	public boolean login(MemberBean member) throws SQLException {
 		boolean loginch=false;
-		MemberBean temp=selectById(member.getId());
-		System.out.println(temp);
-		if(!(temp.getId().equals(""))&&(temp.getPassword().equals(member.getPassword()))){
+		MemberBean mem=selectById(member.getId());
+		if((member.getPassword().equals(mem.getPassword()))){
 			loginch=true;
 		}
 		return loginch;
 	}
 	
 	@Override
-	public void update(MemberBean member) throws SQLException {
-		MemberBean temp = selectById(member.getId());
-		DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member.getName().equals("")?temp.getName():member.getName()),(member.getPassword().equals("")?temp.getPassword():member.getPassword()),(member.getProfileImg().equals("")?temp.getProfileImg():member.getProfileImg()),(member.getPhone().equals("")?temp.getPhone():member.getPhone()),(member.getEmail().equals("")?temp.getEmail():member.getEmail()),member.getId()));
+	public int update(MemberBean[] member) throws SQLException {
+		System.out.println("member[0]: "+member[0]);
+		System.out.println("member[1]: "+member[1]);
+		return DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member[0].getName().equals("")?member[1].getName():member[0].getName()),(member[0].getPassword().equals("")?member[1].getPassword():member[0].getPassword()),(member[0].getProfileImg().equals("")?member[1].getProfileImg():member[0].getProfileImg()),(member[0].getPhone().equals("")?member[1].getPhone():member[0].getPhone()),(member[0].getEmail().equals("")?member[1].getEmail():member[0].getEmail()),member[1].getId()));
 	}
 	
 	@Override
-	public void delete(MemberBean member) throws SQLException{
+	public int delete(MemberBean member) throws SQLException{
 		String sql=String.format("DELETE FROM Member WHERE id='%s'", member.getId());
-		DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(sql);
+		return DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(sql);
 	}
 }

@@ -15,8 +15,8 @@ public class MemberServiceImpl implements MemberService{
 		session=new MemberBean();
 	}
 	@Override
-	public void join(MemberBean member) throws SQLException {
-		MemberDAOImpl.getInstance().insert(member);
+	public int join(MemberBean member) throws SQLException {
+		return MemberDAOImpl.getInstance().insert(member);
 	}
 
 	@Override
@@ -27,18 +27,21 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean login(MemberBean member) throws SQLException {
-		
-		return MemberDAOImpl.getInstance().login(session);
+		return MemberDAOImpl.getInstance().login(member);
 	}
 
 	@Override
-	public void change(MemberBean member) throws SQLException {
-		MemberDAOImpl.getInstance().update(member);
+	public int change(MemberBean member) throws SQLException {
+		MemberBean[] memArr=new MemberBean[2];
+		memArr[0]=member;
+		memArr[1]=session;		
+		System.out.println("serviceImp session"+memArr[1]);
+		return MemberDAOImpl.getInstance().update(memArr);
 	}
 
 	@Override
-	public void remove(MemberBean member) throws SQLException {
-		MemberDAOImpl.getInstance().delete(member);
+	public int remove(MemberBean member) throws SQLException {
+		return MemberDAOImpl.getInstance().delete(session);
 	}
 
 }
