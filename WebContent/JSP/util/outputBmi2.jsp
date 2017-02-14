@@ -1,4 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+<%
+int age=Integer.parseInt(request.getParameter("age"));
+double height=Double.parseDouble(request.getParameter("height")),weight=Double.parseDouble(request.getParameter("weight"));
+%>
 <%!
 	public String bmi(double height,double weight){	
 		String result="";
@@ -17,23 +28,9 @@
 		return result;
 	}
 %>
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
-</head>
-<body>
-
-<%
-int age=0;
-double height=0,weight=0;
-%>
-나이: <input type="text" name="age" /><br>
-몸무게: <input type="text" name="weight" /><br>
-키: <input type="text" name="height"/><br>
-
-
+나이: <%= age %>세<br>
+몸무게: <%= weight %>kg<br>
+키: <%= height %>cm<br>
 결과: <%= bmi(height,weight) %>
 </body>
 </html>
