@@ -48,8 +48,6 @@ public class MemberDAOImpl  implements MemberDAO {
 	
 	@Override
 	public int update(MemberBean[] member) throws SQLException {
-		System.out.println("member[0]: "+member[0]);
-		System.out.println("member[1]: "+member[1]);
 		return DatabaseFactory.createDatabase(Vendor.ORACLE, Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("UPDATE Member SET name='%s',password='%s',profileImg='%s',phone='%s',email='%s' WHERE id='%s'",(member[0].getName().equals("")?member[1].getName():member[0].getName()),(member[0].getPassword().equals("")?member[1].getPassword():member[0].getPassword()),(member[0].getProfileImg().equals("")?member[1].getProfileImg():member[0].getProfileImg()),(member[0].getPhone().equals("")?member[1].getPhone():member[0].getPhone()),(member[0].getEmail().equals("")?member[1].getEmail():member[0].getEmail()),member[1].getId()));
 	}
 	
