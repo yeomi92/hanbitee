@@ -2,6 +2,8 @@ package controller;
 
 import service.BoardService;
 import serviceImpl.BoardServiceImpl;
+
+import java.awt.HeadlessException;
 import java.util.*;
 
 import javax.swing.JOptionPane;
@@ -35,23 +37,46 @@ public class BoardController {
 				param.setTitle(articleArr[1]);
 				param.setContent(articleArr[2]);
 				param.setReadCount("0");
-				service.addArticle(param);
+				try {
+					if(service.addArticle(param)==1){
+						System.out.println("추가 됬습니다.");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case FIND_RECENT_ARTICLE:
-				JOptionPane.showMessageDialog(null, service.findRecentArticle(param).toString());
+				try {
+					JOptionPane.showMessageDialog(null, service.findRecentArticle(param).toString());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case FIND_BY_SEQ:
 				param=new ArticleBean();
 				param.setSeq(JOptionPane.showInputDialog("찾고싶은 article의 시퀀스를 입력하세요."));
-				JOptionPane.showMessageDialog(null, service.findBySeq(param).toString());
+				try {
+					param=service.findBySeq(param);
+					JOptionPane.showMessageDialog(null, (param==null)?"해당 article가 없습니다.":param);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case FIND_BY_ID:
 				param=new ArticleBean();
 				param.setId(JOptionPane.showInputDialog("찾고싶은 article를 작성한 사람의 ID를 입력하세요."));
-				JOptionPane.showMessageDialog(null, service.findSome(param));
+				try {
+					JOptionPane.showMessageDialog(null, service.findSome(param));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case LIST:
-				list=service.boardList();
+				try {
+					list=service.boardList();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				JOptionPane.showMessageDialog(null, (list.size()==0)?"article목록이 없습니다.":list);
 				break;
 			case CHANGE:
@@ -59,12 +84,20 @@ public class BoardController {
 				param.setSeq(JOptionPane.showInputDialog("Title을 변경하고싶은 article의 시퀀스를 입력하세요."));
 				param.setTitle(JOptionPane.showInputDialog("변경할 제목을 입력하세요."));
 				param.setContent(JOptionPane.showInputDialog("변경할 내용을 입력하세요."));
-				service.changeContent(param);
+				try {
+					service.changeContent(param);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			case REMOVE:
 				param=new ArticleBean();
 				param.setSeq(JOptionPane.showInputDialog("삭제하고싶은 article의 시퀀스를 입력하세요."));
-				service.removeContent(param);
+				try {
+					service.removeContent(param);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				break;
 			}
 		}
