@@ -13,7 +13,7 @@ public class BoardServiceTest {
 	public void testAddArticle() {
 	}
 
-	@Test
+	@Test @Ignore
 	public void testFindBySeq() {
 		ArticleBean bean=new ArticleBean();
 		bean.setSeq("1");
