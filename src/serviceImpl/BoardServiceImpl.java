@@ -2,22 +2,27 @@ package serviceImpl;
 
 import java.util.*;
 
+import dao.BoardDAO;
 import daoImpl.BoardDAOImpl;
 import domain.ArticleBean;
 import service.BoardService;
 
 public class BoardServiceImpl implements BoardService{
+	public static BoardServiceImpl getInstance() {
+		return new BoardServiceImpl();
+	}
+	private BoardDAO dao;
 	private List<ArticleBean> list;
 	private int seq;
 	public BoardServiceImpl() {
 		list=new ArrayList<ArticleBean>();
 		seq=1;
+		dao=BoardDAOImpl.getInstance();
 	}
-	public static BoardServiceImpl getInstance() {return new BoardServiceImpl();}
 	
 	@Override
 	public int addArticle(ArticleBean param) throws Exception {
-		return BoardDAOImpl.getInstance().insertArticle(param);
+		return dao.insertArticle(param);
 	}
 	@Override
 	public ArticleBean findRecentArticle(ArticleBean param) throws Exception {
@@ -32,23 +37,16 @@ public class BoardServiceImpl implements BoardService{
 	}
 	@Override
 	public ArticleBean findBySeq(ArticleBean param) throws Exception {
-		return BoardDAOImpl.getInstance().selectBySeq(param);
+		return dao.selectBySeq(param);
 	}
 	@Override
-	public List<ArticleBean> findSome(ArticleBean param) throws Exception {
-		List<ArticleBean> someList=new ArrayList<ArticleBean>();
-		for(ArticleBean i:list){
-			if(param.getId().equals(i.getId())){
-				someList.add(i);
-				i.setReadCount(String.valueOf((Integer.parseInt((i.getReadCount()))+1)));
-			}
-		}
-		return someList;
+	public List<ArticleBean> findSome(String[] param) throws Exception {
+		return dao.selectByWord(param);
 	}
 
 	@Override
 	public List<ArticleBean> boardList() throws Exception {
-		return BoardDAOImpl.getInstance().selectAll();
+		return dao.selectAll();
 	}
 
 	@Override
@@ -65,17 +63,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int removeContent(ArticleBean param) throws Exception {
-		int rs=0;
-		Iterator<ArticleBean> it=list.iterator();
-		while(it.hasNext()){
-			if(it.next().getSeq().equals(param.getSeq())){
-				it.remove();
-				//changeSeq(Integer.parseInt(it.next().getSeq()));
-				break;
-			}
-		}
-		changeSeq(Integer.parseInt(param.getSeq()));
-		return rs;
+		return dao.delete(param);
 	}
 
 	@Override

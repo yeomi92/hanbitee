@@ -1,13 +1,14 @@
+<%@page import="java.util.*"%>
+<%@page import="domain.ArticleBean" %>
+<%@page import="serviceImpl.BoardServiceImpl"%>
+<%@page import="service.BoardService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="service.MemberService" %>
-<%@ page import="serviceImpl.MemberServiceImpl" %>
-<%@page import="domain.MemberBean"%>
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/hanbit.css" />
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
@@ -41,32 +42,31 @@
 	</div>
 </div>
 <div style="height: 140px;"></div>
-<div id="container" class="width_full_size" style="height: 200px;">
+<div id="container" class="width_full_size" style="height: 300px;">
 <%
-	MemberService service=MemberServiceImpl.getInstance();
-	MemberBean member=new MemberBean();
-	member.setId(request.getParameter("id"));
-	member.setPassword(request.getParameter("password"));
-	if(service.findById(member.getId())==null){
+	BoardService service=new BoardServiceImpl();
+	ArticleBean article=new ArticleBean();
+	article.setSeq(request.getQueryString().split("=")[1]);
+	article=service.findBySeq(article);
 %>
-id가 존재하지 않습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<% 	
-	}else{
-		if(service.login(member)){
-			member = service.findById(member.getId());
-%>
-<%= member.getName() %>님,<a href="">내정보</a>
-<input type="submit" value="로그아웃"/>
-<%
-		}else{
-%>
-pw가 틀렸습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<%
-		}
-	}
-%>
+<div class="margin_center" style="width: 500px;height: 180px">
+<table class="table_default margin_center" style="width: 500px;height: 180px">
+<tr>
+	<td colspan="4"><%= article.getTitle() %></td>
+</tr>
+<tr>
+	<td colspan="2">작성자: <%= article.getId() %></td>
+	<td>작성일: <%= article.getRegdate() %></td>
+	<td>조회수: <%= article.getReadCount() %></td>
+</tr>
+<tr>
+	<td colspan="4"><%= article.getContent() %></td>
+</tr>
+</table>
+<a href="articleList.jsp">목록으로</a>
+</div>
+
+
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
 	<dl class="notice">

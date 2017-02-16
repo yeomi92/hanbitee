@@ -63,10 +63,9 @@ public class BoardController {
 				}
 				break;
 			case FIND_BY_ID:
-				param=new ArticleBean();
-				param.setId(JOptionPane.showInputDialog("찾고싶은 article를 작성한 사람의 ID를 입력하세요."));
+				String[] arr=JOptionPane.showInputDialog("id yeom").split(" ");
 				try {
-					JOptionPane.showMessageDialog(null, service.findSome(param));
+					JOptionPane.showMessageDialog(null, service.findSome(arr));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

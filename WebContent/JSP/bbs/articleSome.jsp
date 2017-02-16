@@ -1,13 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="serviceImpl.BoardServiceImpl"%>
+<%@page import="service.BoardService"%>
+<%@page import="daoImpl.BoardDAOImpl"%>
+<%@page import="dao.BoardDAO"%>
+<%@page import="domain.ArticleBean" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="service.MemberService" %>
-<%@ page import="serviceImpl.MemberServiceImpl" %>
-<%@page import="domain.MemberBean"%>
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/hanbit.css" />
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
@@ -41,32 +45,34 @@
 	</div>
 </div>
 <div style="height: 140px;"></div>
-<div id="container" class="width_full_size" style="height: 200px;">
+<div id="container" class="width_full_size" style="height: 300px;">
 <%
-	MemberService service=MemberServiceImpl.getInstance();
-	MemberBean member=new MemberBean();
-	member.setId(request.getParameter("id"));
-	member.setPassword(request.getParameter("password"));
-	if(service.findById(member.getId())==null){
+	BoardService service=BoardServiceImpl.getInstance();
+	List<ArticleBean> list=new ArrayList<ArticleBean>();
+	String[] param={request.getParameter("property"),request.getParameter("searchKeyword")};
+	list=service.findSome(param);
 %>
-id가 존재하지 않습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<% 	
-	}else{
-		if(service.login(member)){
-			member = service.findById(member.getId());
-%>
-<%= member.getName() %>님,<a href="">내정보</a>
-<input type="submit" value="로그아웃"/>
-<%
-		}else{
-%>
-pw가 틀렸습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<%
-		}
-	}
-%>
+<div class="margin_center" style="width: 500px;height: 180px">
+<table class="table_default margin_center" style="width: 500px;height: 180px">
+<tr>
+	<th>번호</th>
+	<th>제목</th>
+	<th>작성자</th>
+	<th>날짜</th>
+	<th>조회수</th>
+</tr>
+<% for(ArticleBean i :list){ %>
+<tr>
+	<td><%= i.getSeq() %></td>
+	<td><a href="article.jsp?seq=<%= i.getSeq() %>"><%= i.getTitle() %></a></td>
+	<td><%= i.getId() %></td>
+	<td><%= i.getRegdate() %></td>
+	<td><%= i.getReadCount() %></td>
+</tr>
+<%} %>
+</table>
+<a href="articleList.jsp">목록으로</a>
+</div>
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
 	<dl class="notice">
@@ -86,6 +92,6 @@ pw가 틀렸습니다.
 	</dl>
 	<address>&copy; <strong><a href="http://www.navercorp.com/" target="_blank">NAVER Corp.</a></strong></address>
 </div>
-</div>
+
 </body>
 </html> 

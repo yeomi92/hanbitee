@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="service.MemberService" %>
-<%@ page import="serviceImpl.MemberServiceImpl" %>
-<%@page import="domain.MemberBean"%>
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/hanbit.css" />
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
@@ -41,32 +38,13 @@
 	</div>
 </div>
 <div style="height: 140px;"></div>
-<div id="container" class="width_full_size" style="height: 200px;">
-<%
-	MemberService service=MemberServiceImpl.getInstance();
-	MemberBean member=new MemberBean();
-	member.setId(request.getParameter("id"));
-	member.setPassword(request.getParameter("password"));
-	if(service.findById(member.getId())==null){
-%>
-id가 존재하지 않습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<% 	
-	}else{
-		if(service.login(member)){
-			member = service.findById(member.getId());
-%>
-<%= member.getName() %>님,<a href="">내정보</a>
-<input type="submit" value="로그아웃"/>
-<%
-		}else{
-%>
-pw가 틀렸습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-<%
-		}
-	}
-%>
+<div id="container" class="width_full_size" style="height: 300px;">
+
+
+
+
+
+
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
 	<dl class="notice">
