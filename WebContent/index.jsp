@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,22 +33,12 @@
 			</div>
 		</li>
 		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="html/common/join.html">회원 가입</a></li>
-		<li style="float:right;"><a class="text_no_underline color_black" href="html/common/login.html">로그인</a></li>
+		<li style="float:right;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/login.do">로그인</a></li>
 	</ul>
 	</div>
 </div>
 <div style="height: 100px"></div>
 <div id="container" class="width_full_size" style="height: 600px">
-<!-- <table>
-	<tr>
-		<td><input type="text" name="" placeholder="아이디" style="font-size: 11px;"/></td>
-		<td><input type="password" name="" placeholder="비밀번호" style="font-size: 11px;"/></td>
-		<td class="bg_color_powderblue text_center font_bold" style="width: 50px;padding: 4px;font-size: 11px;"><a href="html/admin.html" class=" text_no_underline">로그인</a></td>
-		<td class="text_right font_bold" style="width: 100px;padding-top: 4px;font-size: 11px;"><a href="html/join.html" class=" text_no_underline">회원가입</a></td>
-		<td class="color_darkgray" style="padding-top: 4px;">|</td>
-		<td class="color_darkgray font_bold" style="padding-top: 4px;font-size: 11px;"><a href="html/" class=" text_no_underline">아이디/비밀번호 찾기</a></td>
-	</tr>
-</table> -->
 <h1>인덱스</h1>
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
