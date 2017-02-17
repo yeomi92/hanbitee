@@ -59,6 +59,9 @@
 </form>
 <table class="table_default margin_center" style="width: 500px;height: 180px">
 <tr>
+	<td colspan="5">총 게시글 수: <%= list.size() %></td>
+</tr>
+<tr>
 	<th>번호</th>
 	<th>제목</th>
 	<th>작성자</th>
