@@ -1,40 +1,38 @@
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class PatientController
- */
-@WebServlet("/PatientController")
+import util.ActionPath;
+
+@WebServlet({"/patient/loginForm.do","/patient/registerForm.do"})
 public class PatientController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PatientController() {
+
+	public PatientController() {
         super();
-        // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("servlet 진입성공");
+		String path=request.getServletPath();
+		System.out.println("request가 걸어온 길: "+path);
+		String[] action=ActionPath.getAction(path);
+		switch (action[1]) {
+		case "loginForm":
+			request.getRequestDispatcher(action[3]).forward(request,response);
+			break;
+		case "registerForm":
+			request.getRequestDispatcher(action[3]).forward(request,response);
+			break;
+		default:break;
+		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

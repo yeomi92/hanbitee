@@ -32,7 +32,7 @@
 					<span class="tooltiptext">구현되지 않았습니다.</span>
 			</div>
 		</li>
-		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/registForm.do">회원 가입</a></li>
+		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/registerForm.do">회원 가입</a></li>
 		<li style="float:right;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/loginForm.do">로그인</a></li>
 	</ul>
 	</div>
