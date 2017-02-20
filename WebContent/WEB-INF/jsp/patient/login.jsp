@@ -1,28 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ page import="service.PatientService" %>
+<%@ page import="serviceImpl.PatientServiceImpl" %>
+<%@page import="domain.PatientBean"%>
+<!doctype html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Index</title>
-<link rel="stylesheet" type="text/css" href="css/hanbit.css" />
+<title>Login</title>
+<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
 <div id="header" class="width_full_size" style="height: 100px;position: fixed;height: 68px;z-index: 2; background-color: white;">
 	<div class="logo_box width_full_size">
-	<img src="images/common/index_logo.png"/>
+	<img src="../../images/common/index_logo.png"/>
 	</div>
 	<div class="gnb width_full_size">
 	<ul style="margin: 0px;">
-		<li><a class="text_no_underline color_black" href="">홈으로</a></li>
-		<li><a class="text_no_underline color_black" href="html/bbs/bbs_list.html">게시판</a></li>
+		<li><a class="text_no_underline color_black" href="../../index.html">홈으로</a></li>
+		<li><a class="text_no_underline color_black" href="../bbs/bbs_list.html">게시판</a></li>
 		<li><div class="dropdown">
-			<a class="text_no_underline color_black" href="<%= application.getContextPath() %>/admin/login.do">관리자</a>
+			<a class="text_no_underline color_black" href="../admin/admin.html">관리자</a>
 				<div class="dropdown_content">
-				   <p><a class="active" href="html/staff/doctors.html">의사</a></p>
-				   <p><a class="active" href="html/staff/nurses.html">간호사</a></p>
-				   <p><a class="active" href="html/customer/patients.html">환자</a></p>
-				   <p><a class="active" href="html/staff/chart.html">차트</a></p>
+				   <p><a class="active" href="../staff/doctors.html">의사</a></p>
+				   <p><a class="active" href="../staff/nurses.html">간호사</a></p>
+				   <p><a class="active" href="../customer/patients.html">환자</a></p>
+				   <p><a class="active" href="../chart/chart_list.html">차트</a></p>
 				</div>
 			</div>
 		</li>
@@ -32,14 +35,38 @@
 					<span class="tooltiptext">구현되지 않았습니다.</span>
 			</div>
 		</li>
-		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/registForm.do">회원 가입</a></li>
-		<li style="float:right;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/loginForm.do">로그인</a></li>
+		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="join.html">회원 가입</a></li>
+		<li style="float:right;"><a class="text_no_underline color_black" href="login.html">로그인</a></li>
 	</ul>
 	</div>
 </div>
-<div style="height: 100px"></div>
-<div id="container" class="width_full_size" style="height: 600px">
-<h1>인덱스</h1>
+<div style="height: 140px;"></div>
+<div id="container" class="width_full_size" style="height: 200px;">
+<%
+	PatientService service=PatientServiceImpl.getInstance();
+	PatientBean patient=new PatientBean();
+	patient.setPatID(request.getParameter("id"));
+	patient.setPatPass(request.getParameter("password"));
+	if(service.findById(patient.getPatID())==null){
+%>
+id가 존재하지 않습니다.
+<a href="patLoginForm.jsp">뒤로가기</a>
+<% 	
+	}else{
+		if(service.login(patient)){
+			patient = service.findById(patient.getPatID());
+%>
+<%= patient.getPatName() %>님,<a href="">내정보</a>
+<input type="submit" value="로그아웃"/>
+<%
+		}else{
+%>
+pw가 틀렸습니다.
+<a href="patLoginForm.jsp">뒤로가기</a>
+<%
+		}
+	}
+%>
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
 	<dl class="notice">
@@ -61,4 +88,4 @@
 </div>
 </div>
 </body>
-</html>
+</html> 

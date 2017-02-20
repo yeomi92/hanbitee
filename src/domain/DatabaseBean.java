@@ -2,7 +2,6 @@ package domain;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
 import constants.Database;
 
 public class DatabaseBean {

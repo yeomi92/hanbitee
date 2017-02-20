@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class AdminBean{
+public class DoctorBean{
 	@Getter@Setter
-	private String admID,admPass,admName,admGen,admPhone,admEmail,admPermission;
+	private String docID,docPass,majorTreat,docName,docGen,docPhone,docEmail,docPosition;
 }
