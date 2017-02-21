@@ -15,14 +15,14 @@
 	<div class="gnb width_full_size">
 	<ul style="margin: 0px;">
 		<li><a class="text_no_underline color_black" href="">홈으로</a></li>
-		<li><a class="text_no_underline color_black" href="html/bbs/bbs_list.html">게시판</a></li>
+		<li><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/board.do?action=move&page=main">게시판</a></li>
 		<li><div class="dropdown">
-			<a class="text_no_underline color_black" href="<%= application.getContextPath() %>/admin/login.do">관리자</a>
+			<a class="text_no_underline color_black" href="<%= application.getContextPath() %>/admin.do?actioin=move&page=login">관리자</a>
 				<div class="dropdown_content">
-				   <p><a class="active" href="html/staff/doctors.html">의사</a></p>
-				   <p><a class="active" href="html/staff/nurses.html">간호사</a></p>
-				   <p><a class="active" href="html/customer/patients.html">환자</a></p>
-				   <p><a class="active" href="html/staff/chart.html">차트</a></p>
+				   <p><a class="active" href="<%= application.getContextPath() %>/doctor.do?action=move&page=main">의사</a></p>
+				   <p><a class="active" href="<%= application.getContextPath() %>/nurse.do?action=move&page=main">간호사</a></p>
+				   <p><a class="active" href="<%= application.getContextPath() %>/patient.do?action=move&page=main">환자</a></p>
+				   <p><a class="active" href="<%= application.getContextPath() %>/chart.do?action=move&page=main">차트</a></p>
 				</div>
 			</div>
 		</li>
@@ -32,8 +32,8 @@
 					<span class="tooltiptext">구현되지 않았습니다.</span>
 			</div>
 		</li>
-		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/registerForm.do">회원 가입</a></li>
-		<li style="float:right;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient/loginForm.do">로그인</a></li>
+		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient.do?action=move&page=registerForm">회원 가입</a></li>
+		<li style="float:right;"><a class="text_no_underline color_black" href="<%= application.getContextPath() %>/patient.do?action=move&page=loginForm">로그인</a></li>
 	</ul>
 	</div>
 </div>

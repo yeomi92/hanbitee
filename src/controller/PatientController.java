@@ -1,39 +1,27 @@
 package controller;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import util.ActionPath;
+import util.DispatcherServlet;
+import util.Separator;
 
-@WebServlet({"/patient/loginForm.do","/patient/registerForm.do"})
+@WebServlet("/patient.do")
 public class PatientController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public PatientController() {
-        super();
-    }
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		System.out.println("servlet 진입성공");
-		String path=request.getServletPath();
-		System.out.println("request가 걸어온 길: "+path);
-		String[] action=ActionPath.getAction(path);
-		switch (action[1]) {
-		case "loginForm":
-			request.getRequestDispatcher(action[3]).forward(request,response);
-			break;
-		case "registerForm":
-			request.getRequestDispatcher(action[3]).forward(request,response);
-			break;
+		Separator.init(request,response);
+		switch (Separator.command.getAction()) {
+		case "move":DispatcherServlet.send(request,response,Separator.command);break;
 		default:break;
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
