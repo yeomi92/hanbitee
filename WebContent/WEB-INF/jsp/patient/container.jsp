@@ -2,7 +2,7 @@
 <div style="height: 100px;"></div>
 <div id="container" class="width_full_size" style="height: 200px;">
 <form action="<%= application.getContextPath() %>/login.do" style="width: 20%;" class="margin_center">
-<table>
+<table class="table_default margin_center" style="width: 300px;height: 90px">
 	<tr>
 		<th>순서</th>
 		<th>진료일</th>

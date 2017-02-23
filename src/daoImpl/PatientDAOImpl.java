@@ -20,11 +20,11 @@ public class PatientDAOImpl  implements PatientDAO {
 	@Override
 	public PatientBean selectById(String uid) throws SQLException {
 		PatientBean temp=new PatientBean();
-		ResultSet set=DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(String.format("select pat_id, nur_id, doc_id, pat_pass, pat_name, pat_gen, pat_jumin, pat_addr, pat_phone, pat_email, pat_job from patient where pat_id='%s'",uid));
+		ResultSet set=DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeQuery(String.format("select p.pat_id, p.nur_id, p.doc_id, p.pat_pass, p.pat_name, p.pat_gen, p.pat_jumin, p.pat_addr, p.pat_phone, p.pat_email, p.pat_job, d.doc_name from patient p, doctor d where p.pat_id='%s' and p.doc_id=d.doc_id",uid));
 		if(set.next()){
 			temp.setPatID(set.getString("pat_id"));
 			temp.setNurID(set.getString("nur_id"));
-			temp.setDocID(set.getString("doc_id"));
+			temp.setDocID(set.getString("doc_name"));
 			temp.setPatPass(set.getString("pat_pass"));
 			temp.setPatName(set.getString("pat_name"));
 			temp.setPatGen(set.getString("pat_gen"));

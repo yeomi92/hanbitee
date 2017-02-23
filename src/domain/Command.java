@@ -22,6 +22,6 @@ public class Command implements CommandHandler{
 		return null;
 	}
 	public void setView(){
-		this.view=(this.directory.equals("/home"))?"/WEB-INF/jsp/common/main.jsp":"/WEB-INF/jsp"+this.directory+"/"+this.page+".jsp";
+		this.view=(this.directory.equals("/home")||this.action.equals("logout"))?"/WEB-INF/jsp/common/"+this.page+".jsp":"/WEB-INF/jsp"+this.directory+"/"+this.page+".jsp";
 	}
 }

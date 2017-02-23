@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../common/top.jsp"/>
 <jsp:include page="../common/header.jsp"/>
+<jsp:include page="../common/gnb.jsp"/>
 <div style="height: 100px;"></div>
 <div id="container" class="width_full_size" style="height: 200px;">
 <form action="${context}/patient.do" method="post" style="width: 20%;" class="margin_center">

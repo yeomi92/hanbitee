@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../common/top.jsp"/>
 <jsp:include page="../common/header.jsp"/>
-<jsp:include page="../common/gnb.jsp"/>
+<jsp:include page="gnb.jsp"/>
 <div id="container" class="width_full_size">
 <form action="" style="width: 40%;" class="margin_center">
 <table class="table_default">

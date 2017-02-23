@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class DispatcherServlet {
 	public static void send(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		System.out.println(Separator.command.getView());
 		request.getRequestDispatcher(Separator.command.getView()).forward(request, response);
 	}
 }

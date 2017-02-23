@@ -7,12 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.DispatcherServlet;
+import util.Separator;
+
 @WebServlet("/board.do")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		Separator.init(request, response);
+		switch (Separator.command.getAction()) {
+		case "move":DispatcherServlet.send(request, response);break;
+		default:
+			break;
+		}
 	}
 
 }

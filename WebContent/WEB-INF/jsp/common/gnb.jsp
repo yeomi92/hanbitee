@@ -22,4 +22,4 @@
 		<li style="float:right;margin-right: 45px;"><a class="text_no_underline color_black" href="${context}/patient.do?action=move&page=registerForm">회원 가입</a></li>
 		<li style="float:right;"><a class="text_no_underline color_black" href="${context}/patient.do?action=move&page=loginForm">로그인</a></li>
 	</ul>
-	</div>
+</div>

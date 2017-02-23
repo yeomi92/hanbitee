@@ -10,4 +10,7 @@ public interface PatientService {
 	public PatientBean login(PatientBean member) throws SQLException ;
 	public int change(PatientBean member) throws SQLException ;
 	public int remove(PatientBean member) throws SQLException ;
+	//util
+	public String[] getBirth(String jumin);
+	public PatientBean getSession();
 }

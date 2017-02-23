@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="service.PatientService" %>
-<%@ page import="serviceImpl.PatientServiceImpl" %>
-<%@page import="domain.PatientBean"%>
+<%@ page import="java.util.*" %>
+<%@ page import="serviceImpl.BoardServiceImpl" %>
+<%@ page import="service.BoardService" %>
+<%@ page import="domain.ArticleBean" %>
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" type="text/css" href="../../css/hanbit.css"/>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/hanbit.css" />
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
@@ -41,15 +42,40 @@
 	</div>
 </div>
 <div style="height: 140px;"></div>
-<div id="container" class="width_full_size" style="height: 200px;">
-id가 존재하지 않습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-님,<a href="">내정보</a>
-<input type="submit" value="로그아웃"/>
-
-pw가 틀렸습니다.
-<a href="patLoginForm.jsp">뒤로가기</a>
-
+<div id="container" class="width_full_size" style="height: 300px;">
+<%
+	BoardService service=BoardServiceImpl.getInstance();
+	List<ArticleBean> list=new ArrayList<ArticleBean>();
+	list=service.boardList();
+%>
+<div class="margin_center" style="width: 500px;height: 180px">
+<form action="articleSome.jsp">
+<select name="property" name="property">
+    <option value="id">작성자</option>
+    <option value="title">제목</option>
+</select>
+<input type="text" name="searchKeyword"/>
+<input type="submit" value="검색"/>
+</form>
+<table class="table_default margin_center" style="width: 500px;height: 180px">
+<tr>
+	<th>번호</th>
+	<th>제목</th>
+	<th>작성자</th>
+	<th>날짜</th>
+	<th>조회수</th>
+</tr>
+<% for(int i=list.size()-1;i>=0;i--){ %>
+<tr>
+	<td><%= list.get(i).getSeq() %></td>
+	<td><a href="article.jsp?seq=<%= list.get(i).getSeq() %>"><%= list.get(i).getTitle() %></a></td>
+	<td><%= list.get(i).getId() %></td>
+	<td><%= list.get(i).getRegdate() %></td>
+	<td><%= list.get(i).getReadCount() %></td>
+</tr>
+<%} %>
+</table>
+</div>
 </div>
 <div id="footer" class="width_full_size" style="height: 100px; border-top:2px solid black;">
 	<dl class="notice">
