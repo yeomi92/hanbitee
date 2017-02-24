@@ -2,29 +2,29 @@
 <jsp:include page="../common/top.jsp"/>
 <jsp:include page="../common/header.jsp"/>
 <jsp:include page="../common/gnb.jsp"/>
-<div style="height: 100px;"></div>
-<div id="container" class="width_full_size" style="height: 200px;">
-<form action="${context}/patient.do" method="post" style="width: 20%;" class="margin_center">
+<div id="divContainer"></div>
+<div id="container">
+<form id="login" action="${context}/patient.do" method="post" >
 <table>
 	<tr>
-		<td colspan="3"><span style="font-size: 20px;">로그인 또는
-		<a href="join.html"style="text-decoration: none;line-height: inherit;"><span style="color: #254391;">회원가입</span></a></span></td>
+		<td colspan="3"><span id="loginOr">로그인 또는
+		<a id="aJoin" href="join.html"><span id="spanJoin">회원가입</span></a></span></td>
 	</tr>
 	<tr>
-		<td colspan="3" class="font_bold" style="font-size: 10px;">아이디</td>
+		<td id="id" colspan="3">아이디</td>
 	</tr>
 	<tr>
-		<td colspan="3"> <input type="text" placeholder="아이디" name="id" class="width_full_size" style="font-size: 10px;padding: 4px;"/> </td>
+		<td colspan="3"> <input id="inputId" type="text" placeholder="아이디" name="id"/> </td>
 	</tr>
 	<tr>
-		<td colspan="3" class="font_bold" style="font-size: 10px;">비밀번호</td>
+		<td id="pw" colspan="3">비밀번호</td>
 	</tr>
 	<tr>
-		<td colspan="3"> <input type="password" placeholder="비밀번호" name="password" class="width_full_size" style="font-size: 10px;padding: 4px;"/> </td>
+		<td colspan="3"> <input id="inputPw" type="password" placeholder="비밀번호" name="password"/> </td>
 	</tr>
 	<tr>
-		<td colspan="2" style="font-size: 10px; color:#254391;">비밀번호가 기억나지 않으세요?</td>
-		<td style="height: 20px;"><input type="submit" value="로그인" class="color_white text_no_underline height_full_size" style="background-color: #254391;"/></td>
+		<td id="forgot" colspan="2">비밀번호가 기억나지 않으세요?</td>
+		<td id="loginButt" style="height: 20px;"><input id="inputButt" type="submit" value="로그인"/></td>
 	</tr>
 </table>
 <input type="hidden" name="action" value="login" />
@@ -32,3 +32,20 @@
 </form>
 </div>
 <jsp:include page="../common/footer.jsp"/>
+<script>
+$(function(){
+	$('#divContainer').css('height','100px');
+	$('#container').addClass('width_full_size').css('height','200px');
+	$('#login').addClass('margin_center').css('width','20%');
+	$('#loginOr').css('font-size','20px');
+	$('#aJoin').css('text-decoration','none').css('line-height','inherit');
+	$('#spanJoin').css('color','#254391');
+	$('#id').addClass('font_bold').css('font-size','10px');
+	$('#inputId').addClass('width_full_size').css('font-size','10px').css('padding','4px');
+	$('#pw').addClass('font_bold').css('font-size','10px');
+	$('#inputPw').addClass('width_full_size').css('font-size','10px').css('padding','4px');
+	$('#forgot').css('font-size','10px').css('color','#254391');
+	$('#loginButt').css('height','20px').css('color','#254391');
+	$('#inputButt').addClass('color_white').addClass('text_no_underline').addClass('height_full_size').css('background-color','#254391');
+});
+</script>

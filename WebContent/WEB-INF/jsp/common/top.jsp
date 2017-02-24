@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>Join</title>
 <link rel="stylesheet" type="text/css" href="${css}/hanbit.css"/>
+<script src="${js}/jquery-3.1.1.js"></script>
 </head>
 <body>
 <div id="wrapper" class="width_full_size">
