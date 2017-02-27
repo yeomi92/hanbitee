@@ -1,47 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<div id="divGnb">
-	<ul style="margin: 0px;">
-		<li><a id="aMain" class="text_no_underline color_black" href="#">홈으로</a></li>
-		<li><a id="aBoard" class="text_no_underline color_black" href="#">게시판</a></li>
-		<li><div class="dropdown">
-			<a id="aAdminLogin" class="text_no_underline color_black" href="#">관리자</a>
-				<div class="dropdown_content">
-				   <p><a class="active" href="../staff/doctors.html">의사</a></p>
-				   <p><a class="active" href="../staff/nurses.html">간호사</a></p>
-				   <p><a class="active" href="../customer/patients.html">환자</a></p>
-				   <p><a class="active" href="../chart/chart_list.html">차트</a></p>
-				</div>
-			</div>
-		</li>
+<div id="commonGnb">
+	<ul>
+		<li><a>홈으로</a></li>
+		<li><a>게시판</a></li>
+		<li><a>관리자</a></li>
 		<li>
-			<div class="tooltip">
-				<a class="text_no_underline color_black" href="#">병원소개</a>
-					<span class="tooltiptext">구현되지 않았습니다.</span>
+			<div>
+				<a>병원소개</a>
+				<span>구현되지 않았습니다.</span>
 			</div>
 		</li>
-		<li style="float:right;margin-right: 45px;"><a id="aJoin" class="text_no_underline color_black" href="#">회원 가입</a></li>
-		<li style="float:right;"><a id="aPatLogin" class="text_no_underline color_black" href="#">로그인</a></li>
+		<li><a>회원 가입</a></li>
+		<li><a>로그인</a></li>
 	</ul>
 </div>
 <script>
 $(function(){
-	$('#divGnb').addClass('gnb').addClass('width_full_size');
-	document.getElementById('aMain').onclick=function(){
-		location.href="${context}/home.do?action=move&page=main";
-	}
-	document.getElementById('aBoard').addEventListener('click',function(){
-		alert('aBoard');
-		location.href="${context}/board.do?action=move&page=articleList";
+	var commonGnb=$('#commonGnb');
+	commonGnb.addClass('gnb').addClass('width_full_size');
+	commonGnb.find('li:nth-child(1)').click(function(){/* 객체.메서드  근데 여기서 메서드의 파라미터로 메서드를 던졌다. 그래서 이 메서드는 객체로 던진 것이다.(일급객체) */
+		goPage('${context}/home.do','move','main');
 	});
-	document.getElementById('aAdminLogin').onclick=function(){
-		location.href="${context}/admin.do?action=move&page=login";
-	}
-	$('#aJoin').click(function(){
-		alert('jQuery');
-		location.href="${context}/patient.do?action=move&page=registerForm";
+	commonGnb.find('li:nth-child(2)').click(function(){/* 콜백함수 */
+		goPage('${context}/board.do','move','articleList');
 	});
-	document.getElementById('aPatLogin').onclick=function(){
-		location.href="${context}/patient.do?action=move&page=loginForm";
-	}
+	commonGnb.find('li:nth-child(3)').click(function(){
+		goPage('${context}/admin.do','move','login');
+	});
+	commonGnb.find('li:nth-child(5)').css('float','right').css('margin-right','45px').click(function(){
+		goPage('${context}/patient.do','move','registerForm');
+	});
+	commonGnb.find('li:nth-child(6)').css('float','right').click(function(){
+		goPage('${context}/patient.do','move','loginForm');
+	});
+	commonGnb.find('ul').css('margin','0px');
+	commonGnb.find('p>a').addClass('active');
+	commonGnb.find('li:nth-child(4)>div').addClass('tooltip');
+	commonGnb.find('li:nth-child(4)>div>a').addClass('text_no_underline');
+	commonGnb.find('li:nth-child(4)>div>span').addClass('tooltiptext');
+	commonGnb.find('ul li a').addClass('text_no_underline').addClass('color_black');
 });
 </script>

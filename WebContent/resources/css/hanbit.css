@@ -1,14 +1,7 @@
 @CHARSET "UTF-8";
 #contaier{margin-top: 100px;}
-
-a:link {color: #655e66;}/* unvisited link */
-a:visited {color: #655e66;}/* visited link */
-a:hover {color: #655e66;}/* mouse over link */
-a:active {color: #70c5cb;}/* selected link */
 /* reset style */
-html, body {
-margin: 0;padding: 0;border: 0;font-size: 12px;color:#666;font-family:'Dotum', tahoma,arial,sans-serif,verdana,helvetica;
-background: transparent;} 
+html, body {margin: 0;padding: 0;border: 0;font-size: 12px;font-family:'Dotum', tahoma,arial,sans-serif,verdana,helvetica; background: transparent;} 
 h1,h2,h3,h4,h5,h6,p{margin-top:0;}
 fieldset, img{border:0;}
 table{border-collapse:collapse;border-spacing :0;}
@@ -161,11 +154,11 @@ blockquote, q {quotes: none;}
 
 .float_right{float:right;}
 .float_left{float:left;}
-.gnb {background-color: #3f65b4;}
+.gnb {background-color: #3f65b4; height: 33px;}
 .gnb li{display: inline;}
-.gnb>ul>li>a:link, .gnb>ul>li>a:visited, .dropdown>a:link, .dropdown>a:visited, .tooltip>a:link, .tooltip>a:visited{
+.gnb a:link, .gnb li>a:visited, .dropdown>a:link, .dropdown>a:visited, .tooltip>a:link, .tooltip>a:visited{
     background-color: #3f65b4;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 12px;
     text-align: center;
     text-decoration: none;
@@ -173,7 +166,7 @@ blockquote, q {quotes: none;}
     font-weight: bold;
     font-size: 13px;
 }
-.gnb>ul>li>a:hover, .gnb>ul>li>a:active, .dropdown>a:hover, .dropdown>a:active, .tooltip>a:hover, .tooltip>a:active {
+.gnb li>a:hover, .gnb li>a:active, .dropdown>a:hover, .dropdown>a:active, .tooltip>a:hover, .tooltip>a:active {
     background-color: #254391;
 }
 .lnb {
