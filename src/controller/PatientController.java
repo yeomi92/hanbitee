@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,6 +50,37 @@ public class PatientController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			break;
+		case "register":
+			String id=request.getParameter("id");
+			String password=request.getParameter("password");
+			String year=request.getParameter("year");
+			String month=request.getParameter("month");
+			String date=request.getParameter("date");
+			String telecom=request.getParameter("telecom");
+			String firstNum=request.getParameter("firstNum");
+			String middleNum=request.getParameter("middleNum");
+			String lastNum=request.getParameter("lastNum");
+			String rdBtn=request.getParameter("rdBtn");
+			String[] ckbox=(String[])request.getParameterMap().get("ckbox");
+			ArrayList<String> list=new ArrayList<>();
+			list.add(id);
+			list.add(password);
+			list.add(year);
+			list.add(month);
+			list.add(date);
+			list.add(telecom);
+			list.add(firstNum);
+			list.add(middleNum);
+			list.add(lastNum);
+			list.add(rdBtn);
+			String ckbox2="";
+			for(String s:ckbox){
+				ckbox2+=s+",";
+			}
+			list.add(ckbox2);
+			System.out.println(list);
+			//DispatcherServlet.send(request, response);
 			break;
 		default:break;
 		}
