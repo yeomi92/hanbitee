@@ -14,7 +14,7 @@ public class PatientDAOImpl  implements PatientDAO {
 
 	@Override
 	public int insert(PatientBean patient) throws SQLException {
-		return DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate("");
+		return DatabaseFactory.createDatabase(Vendor.ORACLE,Database.USERNAME,Database.PASSWORD).getConnection().createStatement().executeUpdate(String.format("INSERT INTO Patient(pat_id,nur_id,doc_id,pat_pass,pat_name,pat_gen,pat_jumin,pat_addr,pat_phone,pat_email,pat_job) VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')", patient.getPatID(),patient.getNurID(),patient.getDocID(),patient.getPatPass(),patient.getPatName(),patient.getPatGen(),patient.getPatJumin(),patient.getPatAddr(),patient.getPatPhone(),patient.getPatEmail(),patient.getPatJob()));
 	}
 	
 	@Override

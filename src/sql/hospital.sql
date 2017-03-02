@@ -143,4 +143,4 @@ INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VA
 INSERT INTO Chart(chart_id, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('s_140303003', '140303003', 'dyou',  'npark',  'poh',    '입원치료' );
 INSERT INTO Chart(chart_iD, treat_id, doc_id, nur_id, pat_id, chart_contents) VALUES ('p_140308087', '140308087', 'dkim3', 'nlee2',  'psong',  '장염 입원치료' );
 
-select * from patient;
+select * from doctor;

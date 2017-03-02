@@ -7,27 +7,59 @@
 		<table>
 			<tr>
 				<td>
-					<p>
-						<font size="2">한글 또는 영문으로 입력해 주세요.</font>
-					</p>
-					<input type="text" name="id" placeholder="email" size="60">
-					<input type="button" value="중복확인" size="60"><br>
-					<p>
-						<font size="2">LPOINT 아이디는 자주 사용하시는 이메일주소로 입력해주세요.</font>
-					</p>
+					<font size="2">담당의사&담당간호사</font>
+					<select name="doctor">
+						<option value="" selected>의사 선택</option>
+						<option value="dlee">이태정(소아과)</option>
+						<option value="dahn">안성기(내과)</option>
+						<option value="dkim">김민종(외과)</option>
+						<option value="dlee2">이태서(피부과)</option>
+					</select>
+					<select name="nurse">
+						<option value="" selected>간호사 선택</option>
+						<option value="nkim">김은영(소아과)</option>
+						<option value="nyoon">윤성애(내과)</option>
+						<option value="nshin">신지원(피부과)</option>
+						<option value="nyou">유정화(방사선과)</option>
+					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
-					<input type="text" name="password" placeholder="비밀번호" size="60">
-					<p>
-						<font size="2">8~15자의 영문자, 숫자, 특수문자를 함께 입력해주세요.</font>
-					</p>
-					<input type="text" name="ckPassword" placeholder="비밀번호 확인" size="60">
+					<font size="2">아이디</font>
+					<input type="text" name="id" placeholder="아이디"/>
+					<input type="button" value="중복확인"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
+					<font size="2">이름</font>
+					<input type="text" name="name" placeholder="이름"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font size="2">email</font>
+					<input type="text" name="email" placeholder="이메일"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font size="2">비밀번호</font>
+					<input type="text" name="password" placeholder="비밀번호"/>
+					<font size="2">비밀번호 확인</font>
+					<input type="text" name="ckPassword" placeholder="비밀번호 확인"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font size="2">주소</font>
+					<input type="text" name="addr" placeholder="address"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<font size="2">생년월일</font>
 					<select name="year">
 						<option value="" selected>생년 선택</option>
 						<option value="1992">1992</option>
@@ -68,57 +100,47 @@
 						<option value="8">8</option>
 						<option value="9">9</option>
 						<option value="10">10</option>
-					</select><br>
+					</select>
 				</td>
 			</tr>
 			<tr>
 				<td>
+					<font size="2">휴대폰 번호</font><br/>
 					<select name="telecom">
 						<option value="" selected>통신사 선택</option>
 						<option value="SKT">SKT</option>
 						<option value="KT">KT</option>
 						<option value="LGU+">LGU+</option>
-					</select>
-					<select name="firstNum">
+					</select><br/>
+					<select name="phoneNo1">
 						<option value="" selected>번호 선택</option>
 						<option value="010">010</option>
 						<option value="011">011</option>
 						<option value="016">016</option>
 					</select>
-				  - <input type="text" name="middleNum"/>
-				  - <input type="text" name="lastNum"/>
+				  - <input type="text" name="phoneNo2"/>
+				  - <input type="text" name="phoneNo3"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<font size="2">
-						<b>정보수신 동의</b>
-						<b>전체선택</b>
-						<input type="checkbox" name="" value="전체선택"/><br>
-						<b>LPOINT</b>
-						<input type="checkbox" name="ckbox" value="lpointEmail"/>E-Mail
-						<input type="checkbox" name="ckbox" value="lpointSms"/>SMS<br>
-						<b>롯데시네마</b>
-						<input type="checkbox" name="ckbox" value="lotteEmail"/>E-Mail
-						<input type="checkbox" name="ckbox" value="lotteSms"/>SMS<br>
-						*정보수신동의를 하시면, 고객혜택 및 이벤트 등 다양한 정보를 받으실 수 있습니다.
+						<font size="2">직업</font><br/>
+						<input type="checkbox" name="job" value="employee"/>회사원
+						<input type="checkbox" name="job" value="developer"/>개발자<br/>
+						<input type="checkbox" name="job" value="staff"/>스탭
+						<input type="checkbox" name="job" value="doctor"/>의사
+						<input type="checkbox" name="job" value="nurse"/>간호사
+						<input type="checkbox" name="job" value="admin"/>관리자
 					</font>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<font size="2">
-						<span>개인정보<br>유효기간</span>
-						<input type="radio" name="rdBtn" value="del" checked="checked"/>탈퇴 시 파기
-						<input type="radio" name="rdBtn" value="1year"/>1년<br>
-						*개인정보 유효기간 경과 이후 개인정보를 분리 저장관리 또는 파기합니다.
-					</font>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<font size="2">
-						<b>*선택항목에 동의하지 않으셔도 정상적인 서비스를 이용하실 수 있습니다.</b>
+						<font size="2">성별</font>
+						<input type="radio" name="gender" value="M" checked="checked"/>남자
+						<input type="radio" name="gender" value="F"/>여자
 					</font>
 				</td>
 			</tr>
@@ -140,6 +162,8 @@ $(function(){
 		alert('전송직전');
 		$registerForm.submit();
 	});
+	
+	
 	$('#container').addClass('width_full_size');
 	$registerForm.add('margin_center').css('width','40%');
 	tab.addClass('table_default');
